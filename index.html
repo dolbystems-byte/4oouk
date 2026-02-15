@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The 400</title>
+
+    <!-- Open Graph / Discord embeds -->
+    <meta name="description"
+        content="The 400 — limited releases, curated shows and creative collaborations. Management: mgmt@4oo.uk" />
+    <meta property="og:title" content="The 400 — an artist project for music" />
+    <meta property="og:description"
+        content="Limited releases, curated shows and creative collaborations — management & bookings via mgmt@4oo.uk." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://4oo.uk/Untitled.png" />
+    <meta property="og:image:alt" content="Poster wall for The 400" />
+    <meta property="og:site_name" content="The 400" />
+    <!-- Replace the og:url value with your live site URL when available -->
+    <meta property="og:url" content="https://4oo.uk/the400fall.pngq" />
+
+    <!-- Twitter card (used by some services alongside Open Graph) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 400 — an artist project for music" />
+    <meta name="twitter:description"
+        content="Limited releases, curated shows and creative collaborations. mgmt@4oo.uk" />
+    <meta name="twitter:image" content="Untitled.png" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --page: #efebe9;
+            /* pale panel background */
+            --text: #111111;
+            --muted: #6b6b6b;
+            --divider: rgba(0, 0, 0, 0.08);
+            --pill: #ffffff;
+            text-decoration: none;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+            background: var(--page);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 40px
+        }
+
+        /* reduce vertical space only for the header container */
+        header .container {
+            padding-top: 12px;
+            padding-bottom: 12px
+        }
+
+        /* header — sticky */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 6px 0;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.45)
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0px
+        }
+
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        .brand .mark {
+            display: none !important
+        }
+
+        .brand .brand-name {
+            font-family: "Times New Roman", Times, serif;
+            font-weight: 400;
+            font-size: 18px;
+            /* restored size */
+            color: #fff;
+            letter-spacing: 0;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.92);
+            font-weight: 600;
+            font-size: 14px;
+            /* restored size */
+            text-transform: none;
+            letter-spacing: 0
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            opacity: 0.9;
+            transition: opacity .14s ease
+        }
+
+        .nav-links a:hover {
+            opacity: 1
+        }
+
+        .nav-links a::after {
+            display: none
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all .18s
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+            color: #fff
+        }
+
+        @media (max-width:760px) {
+            .nav-links {
+                display: none
+            }
+
+            .icon-btn.menu {
+                display: inline-flex
+            }
+        }
+
+        /* hero / poster wall */
+        .hero-bleed {
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            background-image: url('Untitled.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            margin-bottom: 0;
+            position: relative;
+            overflow: hidden
+        }
+
+        /* flush-left title shown on each hero */
+        .hero-title {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-weight: 800;
+            font-size: clamp(20px, 6vw, 89px);
+            line-height: 1;
+            z-index: 6;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5)
+        }
+
+        .hero-bleed .hero-title {
+            padding-left: 0
+        }
+
+        .section-hero .hero-title {
+            left: 0;
+            padding-left: 0
+        }
+
+        .hero-bleed-about {
+            width: 100%;
+            height: 100vh;
+            min-height: 100vh;
+            background-image: url('Untitled2.png');
+            background-size: cover;
+            background-position: center;
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+            margin-bottom: 0;
+        }
+
+
+        /* section heroes (About / Contact) */
+        .section-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 44px 0;
+            background: #222;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 50px rgba(2, 6, 23, 0.06)
+        }
+
+        .section-hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.36));
+            mix-blend-mode: normal
+        }
+
+        .section-hero .hero-inner {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 28px
+        }
+
+        .section-hero .hero-copy {
+            max-width: 66ch
+        }
+
+        .section-hero .hero-copy h2 {
+            margin: 0;
+            font-size: 32px;
+            line-height: 1.05;
+            font-weight: 700
+        }
+
+        .section-hero .hero-copy p {
+            margin: 8px 0 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.6
+        }
+
+        .section-hero .hero-cta {
+            min-width: 160px;
+            text-align: right
+        }
+
+        .section-hero .pill {
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 0;
+            box-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+            font-weight: 700
+        }
+
+        .section-hero.about {
+            background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.12), rgba(10, 10, 10, 0.12)), url('Untitled.png');
+            background-position: center top
+        }
+
+        .section-hero.contact {
+            background-image: url('Untitled3.png');
+        }
+
+        /* About / Contact content panels */
+        .about-content,
+        .contact-panel {
+            background: var(--page);
+            padding: 48px 0;
+            border-radius: 12px;
+            margin-top: 8px
+        }
+
+        .about-content .container {
+            padding-left: 40px;
+            padding-right: 40px
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .about-grid p {
+            color: var(--muted);
+            line-height: 1.75
+        }
+
+        .contact-card {
+            max-width: 980px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 14px;
+            padding: 26px;
+            display: flex;
+            gap: 26px;
+            align-items: flex-start;
+            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.04)
+        }
+
+        .contact-details {
+            flex: 1
+        }
+
+        .contact-details h3 {
+            margin: 0 0 8px
+        }
+
+        .contact-details p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7
+        }
+
+        .contact-form {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 14px
+        }
+
+        .contact-form button {
+            background: #111;
+            color: #fff;
+            border: 0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        @media (max-width:980px) {
+            .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .section-hero .hero-inner {
+                padding: 22px
+            }
+
+            .contact-card {
+                flex-direction: column
+            }
+
+            .contact-form {
+                width: 100%
+            }
+        }
+
+        @media (max-width:560px) {
+            .section-hero {
+                min-height: 100vh
+            }
+
+            .section-hero .hero-copy h2 {
+                font-size: 22px
+            }
+
+            .section-hero .hero-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center
+            }
+
+            .section-hero .hero-cta {
+                text-align: center
+            }
+        }
+
+        /* offerings panel */
+        .panel {
+            background: var(--page);
+            border-bottom-left-radius: 28px;
+            border-bottom-right-radius: 28px;
+            margin-top: 0;
+            padding: 64px 0 88px
+        }
+
+        .offerings {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            align-items: stretch;
+            padding-left: 52px
+        }
+
+        .offering {
+            padding: 34px 28px 34px 34px;
+            border-left: 1px solid var(--divider);
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: transparent
+        }
+
+        .number {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 22px
+        }
+
+        .offering h3 {
+            font-size: 30px;
+            margin: 0 0 14px;
+            font-weight: 600
+        }
+
+        .offering p {
+            color: var(--muted);
+            margin: 0 0 26px;
+            line-height: 1.7;
+            font-size: 14px;
+            max-width: 50ch
+        }
+
+        .pill {
+            display: inline-block;
+            background: var(--pill);
+            border-radius: 999px;
+            padding: 10px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--text);
+            box-shadow: 0 8px 20px rgba(2, 6, 23, 0.04)
+        }
+
+        /* subtle left edge line that continues above/below */
+        .panel:before {
+            content: "";
+            position: absolute;
+            left: 40px;
+            top: calc(100vh + 24px);
+            height: 260px;
+            width: 1px;
+            background: var(--divider);
+            opacity: 1
+        }
+
+        footer {
+            padding: 48px 20px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        @media (max-width:1080px) {
+            .container {
+                padding: 28px
+            }
+
+            .hero-bleed {
+                height: 100vh;
+                min-height: 100vh;
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px
+            }
+
+            .panel {
+                padding: 48px 0 64px
+            }
+        }
+
+        @media (max-width:760px) {
+            .offerings {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                padding-left: 28px
+            }
+
+            .offering {
+                border-left: none;
+                border-top: 1px solid var(--divider);
+                padding-left: 22px;
+                padding-top: 26px
+            }
+
+            .panel:before {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a class="brand" href="#">
+                    <span class="brand-name">The 400</span>
+                </a>
+
+                <nav class="nav-links" aria-label="Primary navigation">
+                    <a href="#offerings">Projects</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact & Management</a>
+                    <p>mgmt@4oo.uk</p>
+                </nav>
+
+                <div class="nav-actions" aria-hidden="true">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <button class="icon-btn menu" aria-label="Menu">
+                        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M1 1h16M1 7h16M1 13h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-bleed" role="img" aria-label="Poster wall image">
+        <h3 class="hero-title">Projects</h2>
+    </div>
+
+    <section class="panel" aria-label="Offerings">
+        <div class="container">
+            <div class="offerings">
+                <div class="offering">
+                    <div>
+                        <div class="number">001</div>
+                        <h3>POSTHUMAN</h3>
+                        <p>Experimental sonic experiments. A blend of noise and electronic textures.</p>
+                    </div>
+                    <div><a class="pill"
+                            href="https://open.spotify.com/artist/1NORSvPnVo0AFYZnq3zwIQ?si=a6-rDfwKSguGcRJr6-dapQ">POSTHUMAN,
+                            on Spotify.</a></div>
+                </div>
+
+                <div class="offering">
+                    <div>
+                        <div class="number">002</div>
+                        <h3>The 400</h3>
+                        <p>Presave "The Grey" now.</p>
+                    </div>
+                    <div><a class="pill" href="https://ffm.to/thegrey">Presave "The Grey" now.</a></div>
+                </div>
+
+                <div class="offering">
+                    <div>
+                        <div class="number">003</div>
+                        <h3>Americana Massacre</h3>
+                        <p>A unique indie rock band with a distinctive sound and style.</p>
+                    </div>
+                    <div><a class="pill" href="#">Presave "Homesick" soon.</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section-hero about" aria-label="About the 400">
+        <h3 class="hero-title">About</h2>
+            <div class="hero-bleed-about" role="img" aria-label="Poster wall image"></div>
+    </section>
+
+    <section class="about-content" aria-label="About content">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h3 style="margin-top:0">Who we are</h3>
+                    <p>We release music, produce shows and collaborate with designers, filmmakers and agencies to create
+                        narrative-driven projects. Our work focuses on limited releases, audience-first activations and
+                        premium content.</p>
+                    <p style="margin-top:16px;color:var(--muted)">Discography, press and links available on request.
+                        Please scroll down to find contacts.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section-hero contact" aria-label="Contact the 400">
+        <h2 class="hero-title">Contact</h2>
+
+    </section>
+
+    <section id="contact-panel" class="contact-panel" aria-label="Contact panel">
+        <div class="container">
+            <div class="contact-card">
+                <div class="contact-details">
+                    <h3>Management</h3>
+                    <p>Email: <a href="mailto:malith@xz1.ca">malith@xz1.ca</a><br /> or <a
+                            href="mailto:mgmt@4oo.uk">mgmt@4oo.uk</a><br />For press and bookings please use
+                        the
+                        form.</p>
+                </div>
+                <form id="contactForm" class="contact-form" action="#" onsubmit="return sendMail(this)">
+                    <input name="name" placeholder="Your name" required />
+                    <input name="email" type="email" placeholder="Email" required />
+                    <textarea name="message" rows="4" placeholder="Message"></textarea>
+                    <button type="submit">Send message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © <strong>The 400 & XZ1 Recordings</strong> — 2026.
+    </footer>
+
+    <script>
+        function sendMail(form) {
+            const name = (form.name?.value || '').trim();
+            const email = (form.email?.value || '').trim();
+            const message = (form.message?.value || '').trim();
+            if (!name || !email) { alert('Please provide your name and email.'); return false; }
+            const subject = encodeURIComponent('THE 400 MGMT INQUIRY – ' + name);
+            const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+            const mailto = 'mailto:malith@xz1.ca?subject=' + subject + '&body=' + body;
+            window.location.href = mailto;
+            return false;
+        }
+    </script>
+</body>
+
+</html>
